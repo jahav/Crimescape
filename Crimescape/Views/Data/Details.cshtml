@@ -1,0 +1,29 @@
+﻿@model Crimescape.Entities.ExcelDataSource
+
+@{
+	ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+	<legend>ExcelDataSource</legend>
+
+	<div class="display-label">
+		@Html.DisplayNameFor(model => model.Description)
+	</div>
+	<div class="display-field">
+		@Html.DisplayFor(model => model.Description)
+	</div>
+
+	<div class="display-label">
+		@Html.DisplayNameFor(model => model.OriginalFilename)
+	</div>
+	<div class="display-field">
+		@Html.DisplayFor(model => model.OriginalFilename)
+	</div>
+</fieldset>
+<p>
+	@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

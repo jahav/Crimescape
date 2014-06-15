@@ -92,7 +92,9 @@ namespace Crimescape.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(exceldatasource).State = EntityState.Modified;
+				var entity = db.DataSources.Find(exceldatasource.Id);
+				entity.Description = exceldatasource.Description;
+                db.Entry(entity).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

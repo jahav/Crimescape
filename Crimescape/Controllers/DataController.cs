@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Crimescape.Models;
 using System.IO;
 using Crimescape.Entities;
+using AutoMapper;
 
 namespace Crimescape.Controllers
 {
@@ -126,6 +127,23 @@ namespace Crimescape.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+		public ActionResult Import(int id = 0)
+		{
+			var dataSource = db.DataSources.Find(id);
+			if (dataSource == null)
+			{
+				return HttpNotFound();
+			}
+			return View(Mapper.Map<ExcelDataViewModel>(dataSource));
+		}
+
+		[HttpPost, ActionName("Import")]
+		[ValidateAntiForgeryToken]
+		public ActionResult ImportConfirmed(int id = 0)
+		{
+			return Content("TODO:");
+		}
 
         protected override void Dispose(bool disposing)
         {

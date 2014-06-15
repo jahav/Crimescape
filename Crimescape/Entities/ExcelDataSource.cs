@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -20,5 +21,16 @@ namespace Crimescape.Entities
 		public string OriginalFilename { get; set; }
 
 		public string Description { get; set; }
+
+		/// <summary>
+		/// Were data inserted into
+		/// </summary>
+		public bool Processed { get; set; }
+
+		/// <summary>
+		/// Date when the file was last inserted into database. If never, null.
+		/// </summary>
+		[DisplayFormat(NullDisplayText="Never")]
+		public DateTime? ProcessedDate { get; set; }
 	}
 }
